@@ -1,7 +1,8 @@
 # application version setting
 module TestGuru
-  class Application < Rails::Application
+  class Application
     VERSION = '0.0.1'
+    VERSION.freeze
   end
 end
 
