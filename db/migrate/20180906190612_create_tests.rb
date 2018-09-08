@@ -2,7 +2,7 @@ class CreateTests < ActiveRecord::Migration[5.2]
   def change
     create_table :tests do |t|
       t.string :title
-      t.integer :level, default: 0
+      t.integer :level, null: false
       t.references :category, foreign_key: true
 
       t.timestamps
