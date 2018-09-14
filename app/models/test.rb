@@ -1,13 +1,13 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
-  has_many :surveys
-  has_many :users, through: :serveys
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+  has_many :questions, dependent: :delete_all
+  has_many :surveys, dependent: :delete_all
+  has_many :users, through: :surveys
+  belongs_to :author, class_name: 'User'
 
   def self.by_category(name)
     Test.where(categories: { title: name }).
-      joins("inner join categories on categories.id = tests.category_id").
+      joins(:category).
       order(id: :desc).
       pluck(:title)
   end
