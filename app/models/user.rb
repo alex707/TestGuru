@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-  has_many :surveys, dependent: :delete_all
+  has_many :surveys, dependent: :destroy
   has_many :tests, through: :surveys
-  has_many :tasks, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
+  has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
 
   def by_level(level)
-    Test.where(level: level).
-      joins(:surveys).
-      where(surveys: { user: self })
+    Test.where(level: level, surveys: { user: self }).
+      joins(:surveys)
   end
 end
