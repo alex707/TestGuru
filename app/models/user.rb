@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
 
   def by_level(level)
-    Test.where(level: level, surveys: { user: self }).
-      joins(:surveys)
+    self.tests.where(level: level)
   end
 end
