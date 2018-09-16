@@ -8,7 +8,8 @@
 
 users = User.create!([
   { name: 'Arnold', email: 'aa@aa.aa' },
-  { name: 'Ben', email: 'bb@bb.bb'}
+  { name: 'Ben', email: 'bb@bb.bb' },
+  { name: 'God', email: 'god@god.god' }
 ])
 
 cats = Category.create!([
@@ -18,29 +19,29 @@ cats = Category.create!([
 ])
 
 tests = Test.create!([
-  { title: 'кладезь мудрости', level: 30, category_id: cats[1].id },
-  { title: 'великие изыскания', level: 60, category_id: cats.last.id }
+  { title: 'кладезь мудрости', level: 30, category: cats[1], author: users.last },
+  { title: 'великие изыскания', level: 60, category: cats.last, author: users.last }
 ])
 
 surveys = Survey.create!([
-  { user_id: users.first.id, test_id: tests.first.id },
-  { user_id: users.last.id, test_id: tests.last.id }
+  { user: users.first, test: tests.first },
+  { user: users[1], test: tests.last }
 ])
 
 quests = Question.create!([
-  { body: 'в чём сила?', test_id: tests.first.id },
-  { body: 'кто виноват?', test_id: tests.first.id },
-  { body: 'как достать соседа?', test_id: tests.first.id },
-  { body: 'быть или не быть?', test_id: tests.last.id },
-  { body: 'когда наступит завтра?', test_id: tests.last.id }
+  { body: 'в чём сила?', test: tests.first },
+  { body: 'кто виноват?', test: tests.first },
+  { body: 'как достать соседа?', test: tests.first },
+  { body: 'быть или не быть?', test: tests.last },
+  { body: 'когда наступит завтра?', test: tests.last }
 ])
 
 answers = Answer.create!([
-  { body: 'всё будет coca-cola', correct: true, question_id: quests.first.id },
-  { body: 'мир не прост', correct: true, question_id: quests[1].id },
-  { body: 'yellow submorine', correct: true, question_id: quests[2].id },
-  { body: 'палка о двух концах', correct: true, question_id: quests[3].id },
-  { body: 'я ломал стекло', correct: true, question_id: quests[4].id },
-  { body: 'один в поле не воин', correct: true, question_id: quests[4].id },
-  { body: 'rm -rf', correct: false, question_id: quests[4].id },
+  { body: 'всё будет coca-cola', correct: true, question: quests.first },
+  { body: 'мир не прост', correct: true, question: quests[1] },
+  { body: 'yellow submorine', correct: true, question: quests[2] },
+  { body: 'палка о двух концах', correct: true, question: quests[3] },
+  { body: 'я ломал стекло', correct: true, question: quests[4] },
+  { body: 'один в поле не воин', correct: true, question: quests[4] },
+  { body: 'rm -rf', correct: false, question: quests[4] },
 ])

@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  has_many :surveys, dependent: :destroy
+  has_many :tests, through: :surveys
+  has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
+
   def by_level(level)
-    Test.where(level: level).
-      joins("inner join surveys on surveys.test_id = tests.id").
-      where("surveys.user_id = ?", self.id)
+    self.tests.where(level: level)
   end
 end
