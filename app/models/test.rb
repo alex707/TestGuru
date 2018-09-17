@@ -5,17 +5,12 @@ class Test < ApplicationRecord
   has_many :users, through: :surveys
   belongs_to :author, class_name: 'User'
 
-  validates :title, presence: true
-  validates_numericality_of :level, greater_than_or_equal_to: 0
-  validates_uniqueness_of :title, scope: :level
+  validates :title, presence: true, uniqueness: { scope: :level }
+  validates :level, :numericality => { only_integer: true, greater_than_or_equal_to: 0 }
 
-  def self.by_category(name)
-    where(categories: { title: name }).
-      joins(:category).
-      order(id: :desc)
-  end
+  scope :by_category, -> (name) { where(categories: { title: name }).joins(:category).order(id: :desc) }
 
-  def self.difficulty_level(level)
+  scope :difficulty_level, -> (level) do
     lvl = case level
           when :easy
             0..1

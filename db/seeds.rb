@@ -28,13 +28,13 @@ surveys = Survey.create!([
   { user: users[1], test: tests.last }
 ])
 
-quests = [
+quests = Question.create!([
   { body: 'в чём сила?', test: tests.first },
   { body: 'кто виноват?', test: tests.first },
   { body: 'как достать соседа?', test: tests.first },
   { body: 'быть или не быть?', test: tests.last },
   { body: 'когда наступит завтра?', test: tests.last }
-].map { |q| Question.new q }
+])
 
 answers = Answer.create!([
   { body: 'всё будет coca-cola', correct: true, question: quests.first },
@@ -45,5 +45,3 @@ answers = Answer.create!([
   { body: 'один в поле не воин', correct: true, question: quests[4] },
   { body: 'rm -rf', correct: false, question: quests[4] },
 ])
-
-quests.map(&:save!)
