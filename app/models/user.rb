@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def by_level(level)
-    Test.where(level: level, surveys: { user: self }).
-      joins(:surveys)
+    tests.where(level: level)
   end
 end
