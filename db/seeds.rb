@@ -19,8 +19,8 @@ cats = Category.create!([
 ])
 
 tests = Test.create!([
-  { title: 'кладезь мудрости', level: 30, category: cats[1], author: users.last },
-  { title: 'великие изыскания', level: 60, category: cats.last, author: users.last }
+  { title: 'кладезь мудрости', level: 1, category: cats[1], author: users.last },
+  { title: 'великие изыскания', level: 5, category: cats.last, author: users.last }
 ])
 
 surveys = Survey.create!([
