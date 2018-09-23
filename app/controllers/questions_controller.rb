@@ -1,11 +1,11 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show]
-  before_action :find_test, only: %i[index]
+  before_action :find_test, only: %i[index create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    arr = @test.questions.pluck(:id, :body).map { |elem| "#{elem.first} #{elem.last}" }
+    arr = @test.questions.pluck(:id, :body).map { |id, body| "#{id} #{body}" }
 
     render inline: "#{arr.join("</br>")}"
   end
@@ -19,12 +19,15 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
+    logger.info(@test.inspect)
+    question = @test.questions.build(question_params)
+    @test.save
+
     render plain: question.inspect
   end
 
   def destroy
-    Question.delete(params[:id])
+    Question.destroy(params[:id])
 
     render plain: "question #{params[:id]} deleted"
   end
@@ -32,7 +35,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :test_id)
+    params.require(:question).permit(:body)
   end
 
   def find_test
