@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: %i[show]
+  before_action :find_question, only: %i[show destroy]
   before_action :find_test, only: %i[index create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
@@ -19,17 +19,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    logger.info(@test.inspect)
-    question = @test.questions.build(question_params)
+    question = @test.questions.create(question_params)
     @test.save
 
     render plain: question.inspect
   end
 
   def destroy
-    Question.destroy(params[:id])
+    @question.destroy
 
-    render plain: "question #{params[:id]} deleted"
+    render plain: "question #{params[:id]} (#{@question.body}) deleted"
   end
 
   private
