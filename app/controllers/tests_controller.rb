@@ -8,7 +8,6 @@ class TestsController < ApplicationController
   end
 
   def show
-
   end
 
   private
