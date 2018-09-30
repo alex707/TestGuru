@@ -1,34 +1,40 @@
 class QuestionsController < ApplicationController
-  before_action :find_question, only: %i[show destroy]
-  before_action :find_test, only: %i[index create]
+  before_action :find_question, only: %i[show edit update destroy]
+  before_action :find_test, only: %i[new create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-    arr = @test.questions.pluck(:id, :body).map { |id, body| "#{id} #{body}" }
-
-    render inline: "#{arr.join("</br>")}"
-  end
-
   def show
-    render plain: "#{@question.body}"
   end
 
   def new
-    
+    @question = @test.questions.new
+  end
+
+  def edit
   end
 
   def create
-    question = @test.questions.create(question_params)
-    @test.save
+    @question = @test.questions.build(question_params)
+    if @test.save
+      redirect_to test_path(@test)
+    else
+      render :new
+    end
+  end
 
-    render plain: question.inspect
+  def update
+    if @question.update(question_params)
+      redirect_to test_path(@question.test)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @question.destroy
 
-    render plain: "question #{params[:id]} (#{@question.body}) deleted"
+    redirect_to test_path(@question.test)
   end
 
   private
