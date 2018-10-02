@@ -1,7 +1,7 @@
 # application version setting
 module TestGuru
   class Application
-    VERSION = '0.6.2'.freeze
+    VERSION = '0.7.0'.freeze
   end
 end
 

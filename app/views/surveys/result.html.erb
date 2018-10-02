@@ -1,0 +1,30 @@
+<h1>The <%= @survey.test.title %> Test was completed!</h1>
+
+<p>
+  <% correct = @survey.correct_questions %>
+  <% total = @survey.test.questions.count %>
+  <% res = ( (correct.to_f / total.to_f).round(2)*100 ).to_i %>
+
+  <% if res >= 85 %>
+    <% color = 'green' %>
+
+    <p>Your testing is succesfull!</p>
+  <% else %>
+    <% color = 'red' %>
+
+    <p>It's a bad result. Try again next time.</p>
+  <% end %>
+
+  <p style="color:<%= color %>;">(<%= res %>%)</p>
+</p>
+
+<p>
+  Correct answers: <%= correct %>
+</p>
+
+<p>
+  Total questions: <%= total %>
+</p>
+
+
+<%= link_to 'Back', tests_path %>
