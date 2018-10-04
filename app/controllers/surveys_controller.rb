@@ -5,6 +5,9 @@ class SurveysController < ApplicationController
   end
 
   def result
+    @correct = @survey.correct_questions
+    @total = @survey.test.questions.count
+    @res = ( (@correct.to_f / @total.to_f).round(2)*100 ).to_i
   end
 
   def update
@@ -22,5 +25,4 @@ class SurveysController < ApplicationController
   def find_survey
     @survey = Survey.find(params[:id])
   end
-
 end

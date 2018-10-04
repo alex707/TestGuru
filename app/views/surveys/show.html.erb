@@ -1,10 +1,7 @@
 <h1>Pass the test</h1>
 
-<% total = @survey.test.questions.count %>
-<% number = @survey.test.questions.order(:id).where('id <= ?', @survey.current_question.id).count %>
-
 <p>
-  Question: <%= number %> / <%= total %>
+  Question: <%= @survey.number %> / <%= @survey.total %>
 </p>
 
 <b>

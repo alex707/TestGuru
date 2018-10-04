@@ -4,36 +4,45 @@ class Survey < ApplicationRecord
   belongs_to :user
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: :create
-  before_validation :before_validation_set_next_question, on: :update
+  before_validation :before_validation_set_next_question, on: %i[create update]
 
   def completed?
     current_question.nil?
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
 
     save!
   end
 
-  private
-
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
+  def number
+    self.test.questions.order(:id).where('id <= ?', self.current_question.id).count
   end
 
+  def total
+    self.test.questions.count
+  end
+
+  private
+
   def before_validation_set_next_question
-    self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+    next_question
   end
 
   def correct_answer?(answer_ids)
-    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    !answer_ids.nil? && correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def correct_answers
     current_question.answers.correct
+  end
+
+  def next_question
+    if self.current_question.nil?
+      self.current_question = test.questions.order(:id).first 
+    else
+      self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+    end
   end
 end

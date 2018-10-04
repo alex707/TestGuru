@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :find_question, only: %i[new create]
-  before_action :set_answer, only: %i[show edit update destroy]
+  before_action :find_answer, only: %i[show edit update destroy]
 
   def show
   end
@@ -15,22 +15,18 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.new(answer_params)
 
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @answer.save
+      redirect_to @answer, notice: 'Answer was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @answer.update(answer_params)
+      redirect_to @answer, notice: 'Answer was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -41,7 +37,7 @@ class AnswersController < ApplicationController
 
   private
 
-  def set_answer
+  def find_answer
     @answer = Answer.find(params[:id])
   end
 
