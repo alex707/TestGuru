@@ -1,14 +1,10 @@
 module SurveysHelper
-  def color res
-    if res >= 85
-      'green'
-    else
-      'red'
-    end
+  def color(survey)
+    survey.pass? ? 'green' : 'red'
   end
 
-  def complete res
-    if res >= 85
+  def complete(survey)
+    if survey.pass?
       'Your testing is succesfull!'
     else
       "It's a bad result. Try again next time."

@@ -24,14 +24,26 @@ class Survey < ApplicationRecord
     self.test.questions.count
   end
 
+  def successfull
+    self.correct_questions
+  end
+
+  def result
+    ( (successfull.to_f / total.to_f).round(2) * 100 ).to_i
+  end
+
+  def pass?
+    result >= 85 ? true : false
+  end
+
   private
 
   def before_validation_set_next_question
-    next_question
+    self.current_question = next_question
   end
 
   def correct_answer?(answer_ids)
-    !answer_ids.nil? && correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    Array(answer_ids) && correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def correct_answers
@@ -40,9 +52,9 @@ class Survey < ApplicationRecord
 
   def next_question
     if self.current_question.nil?
-      self.current_question = test.questions.order(:id).first 
+      test.questions.order(:id).first
     else
-      self.current_question = test.questions.order(:id).where('id > ?', current_question.id).first
+      test.questions.order(:id).where('id > ?', current_question.id).first
     end
   end
 end
