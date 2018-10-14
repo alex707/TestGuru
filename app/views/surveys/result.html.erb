@@ -1,0 +1,17 @@
+<h1>The <%= @survey.test.title %> Test was completed!</h1>
+
+<p>
+  <p><%= complete(@survey) %></p>
+  <p style="color:<%= color(@survey) %>;">(<%= @survey.result %>%)</p>
+</p>
+
+<p>
+  Correct answers: <%= @survey.successfull %>
+</p>
+
+<p>
+  Total questions: <%= @survey.total %>
+</p>
+
+
+<%= link_to 'Back', tests_path %>
