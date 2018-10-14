@@ -1,0 +1,11 @@
+<p>
+  <%= link_to 'Test Guru', tests_path %>
+<p>
+
+<p>
+  <%= logged_id? ? link_to('Выход', logout_url) : link_to('Вход', login_url) %>
+<p>
+
+<p>
+  <%= link_to 'Регистрация', signup_url %>
+<p>
