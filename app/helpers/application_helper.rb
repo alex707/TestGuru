@@ -7,11 +7,9 @@ module ApplicationHelper
     link_to repo, "http://github.com/#{author}/#{repo}", target: '_blank'
   end
 
-  def show_flash flash
-    if flash[:alert]
-      content_tag :p, flash[:alert], class: 'flash alert'
-    elsif flash[:info]
-      content_tag :p, flash[:info], class: 'flash info'
+  def show_flash key
+    if flash[key]
+      content_tag :p, flash[key], class: "flash #{key}"
     end
   end
 end

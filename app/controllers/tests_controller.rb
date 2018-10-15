@@ -24,7 +24,7 @@ class TestsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(session[:user_id])
+    current_user
   end
 
   def rescue_with_test_not_found

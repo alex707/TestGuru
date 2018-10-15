@@ -5,13 +5,10 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    cookies[:last_path] = request.path
-
     unless current_user
+      cookies[:last_path] = request.path
       redirect_to login_path
     end
-
-    cookies[:email] = current_user&.email
   end
 
   def current_user
