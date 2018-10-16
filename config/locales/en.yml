@@ -31,3 +31,15 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "Such email has been taken"
+              invalid: "Email must be only email-format"
+            password:
+              blank: "Password can not be blank"
+            password_confirmation:
+              confirmation: "Pass confirmation field must be filled"

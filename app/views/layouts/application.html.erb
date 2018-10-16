@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <%= render 'shared/header' %>
+    </br>
+    </br>
+
+    <% if logged_id? %>
+      <p class="nav user">Welcome, <b><%= current_user.email %></b> Guru</p>
+    <% end %>
+    <%= show_flash :info %>
+
     <%= yield %>
 
     <%= render 'shared/footer' %>

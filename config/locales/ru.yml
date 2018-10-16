@@ -1,2 +1,14 @@
 ru:
   hello: "Мир, привет!"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "Такой эмейл уже используется"
+              invalid: "Эмейл должен быть в эмейл-формате"
+            password:
+              blank: "Пароль не может быть пустым"
+            password_confirmation:
+              confirmation: "Поле с подтверждением пароля не может быть пустым"
