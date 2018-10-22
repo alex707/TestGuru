@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show edit update destroy]
   before_action :find_test, only: %i[new create]
+  before_action :admin_required!
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -17,7 +18,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.build(question_params)
     if @test.save
-      redirect_to test_path(@test)
+      redirect_to admin_test_path(@test)
     else
       render :new
     end
@@ -25,7 +26,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to test_path(@question.test)
+      redirect_to admin_test_path(@question.test)
     else
       render :edit
     end
@@ -34,10 +35,14 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
 
-    redirect_to test_path(@question.test)
+    redirect_to admin_test_path(@question.test)
   end
 
   private
+
+  def admin_required!
+    redirect_to root_path, alert: 'You are not authorized to view this page.' unless current_user.is_a?(Admin)
+  end
 
   def question_params
     params.require(:question).permit(:body)

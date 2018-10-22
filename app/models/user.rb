@@ -1,6 +1,7 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable,
+         :validatable, :confirmable
 
   #include Auth
 
@@ -9,8 +10,6 @@ class User < ApplicationRecord
   has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
 
   validates :email, format: { with: /\A.+@.+\z/ }, uniqueness: true
-
-  has_secure_password
 
   def survey(test)
     surveys.order(id: :desc).find_by(test: test)

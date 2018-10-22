@@ -6,11 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = User.create!([
-  { name: 'Arnold', email: 'aa@aa.aa' },
-  { name: 'Ben', email: 'bb@bb.bb' },
-  { name: 'God', email: 'god@god.god' }
-])
+users = []
+
+[
+  { name: 'Arnold', email: 'a@a.a',       password: 'aaaaaa' },
+  { name: 'Ben',    email: 'b@b.b',       password: 'bbbbbb' },
+  { name: 'God',    email: 'god@god.god', password: 'godgod' }
+].each do |attrs|
+  u = User.new(attrs)
+  u.skip_confirmation!
+  u.save!
+  users << u
+end
 
 cats = Category.create!([
   { title: 'Math' },
