@@ -1,6 +1,5 @@
 class SurveysController < ApplicationController
 
-  before_action :authenticate_user!
   before_action :find_survey, only: %i[show update result]
 
   def show

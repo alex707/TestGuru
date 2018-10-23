@@ -9,8 +9,6 @@ class User < ApplicationRecord
   has_many :tests, through: :surveys
   has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
 
-  validates :email, format: { with: /\A.+@.+\z/ }, uniqueness: true
-
   def survey(test)
     surveys.order(id: :desc).find_by(test: test)
   end
@@ -18,4 +16,9 @@ class User < ApplicationRecord
   def by_level(level)
     tests.where(level: level)
   end
+
+  def is_admin?
+    is_a?(Admin)
+  end
+
 end

@@ -1,7 +1,6 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::BaseController
   before_action :find_question, only: %i[show edit update destroy]
   before_action :find_test, only: %i[new create]
-  before_action :admin_required!
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -39,10 +38,6 @@ class QuestionsController < ApplicationController
   end
 
   private
-
-  def admin_required!
-    redirect_to root_path, alert: 'You are not authorized to view this page.' unless current_user.is_a?(Admin)
-  end
 
   def question_params
     params.require(:question).permit(:body)

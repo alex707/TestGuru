@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def show_name
-    current_user.last_name&.empty? ? current_user.email : current_user.last_name
+    current_user.last_name.presence || current_user.email
   end
 end

@@ -3,9 +3,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
 
-  def after_sign_in_path_for(resource)
-    current_user.is_a?(Admin) ? admin_tests_path : tests_path
+  def after_sign_in_path_for(user)
+    user.is_admin? ? admin_tests_path : tests_path
   end
 
   protected
