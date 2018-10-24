@@ -17,7 +17,7 @@ class User < ApplicationRecord
     tests.where(level: level)
   end
 
-  def is_admin?
+  def admin?
     is_a?(Admin)
   end
 
