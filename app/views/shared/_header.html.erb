@@ -3,9 +3,9 @@
 <p>
 
 <p>
-  <%= logged_id? ? link_to('Выход', logout_url) : link_to('Вход', login_url) %>
+  <%= user_signed_in? ? link_to('Выход', destroy_user_session_path, method: :delete) : link_to('Вход', user_session_path) %>
 <p>
 
 <p>
-  <%= link_to 'Регистрация', signup_url %>
+  <%= link_to('Регистрация', new_user_registration_path) unless user_signed_in? %>
 <p>

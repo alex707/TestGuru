@@ -1,21 +1,19 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user,
-                :logged_id?
 
-  private
+  protect_from_forgery with: :exception
 
-  def authenticate_user!
-    unless current_user
-      cookies[:last_path] = request.path
-      redirect_to login_path
-    end
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
+
+  def after_sign_in_path_for(user)
+    user.admin? ? admin_tests_path : tests_path
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :last_name, :first_name, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :last_name, :first_name, :email])
   end
 
-  def logged_id?
-    current_user.present?
-  end
 end
