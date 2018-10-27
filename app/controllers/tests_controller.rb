@@ -1,11 +1,14 @@
 class TestsController < ApplicationController
 
-  before_action :find_test, only: %i[start]
+  before_action :find_test, only: %i[show start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
     @tests = Test.all
+  end
+
+  def show
   end
 
   def start

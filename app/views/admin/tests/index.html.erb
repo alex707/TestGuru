@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tests</h1>
+<h1><%= t('.index') %></h1>
 
 <p>
-  <%= link_to 'New test', new_admin_test_path %>
+  <%= link_to t('admin.tests.new.create'), new_admin_test_path %>
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Questions</th>
+      <th><%= t('.title') %></th>
+      <th><%= t('.count') %></th>
       <th colspan="6"></th>
     </tr>
   </thead>

@@ -1,5 +1,19 @@
 <tr>
+  <td><%= t('.title') %>:</td>
   <td><%= test.title %></td>
+</tr>
+<tr>
+  <td><%= t('.count') %>:</td>
   <td><%= test.questions.count %></td>
-  <td><%= button_to 'Start', start_test_path(test) %></td>
+</tr>
+<tr>
+  <td><%= t('.hard') %>:</td>
+  <td><%= test.level %></td>
+</tr>
+<tr>
+  <td><%= t('.published') %>:</td>
+  <td><%= test.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+</tr>
+<tr>
+  <td><%= button_to t('tests.index.start'), start_test_path(test) %></td>
 </tr>

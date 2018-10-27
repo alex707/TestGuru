@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
   activerecord:
@@ -43,3 +12,72 @@ en:
               blank: "Password can not be blank"
             password_confirmation:
               confirmation: "Pass confirmation field must be filled"
+
+  helpers:
+    submit:
+      test:
+        create: "Create test"
+        update: "Update test"
+    label:
+      test:
+        title: "Title"
+        level: "Difficulty"
+        category_id: "Category"
+
+  shared:
+    errors:
+      header:
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
+
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"
+
+  admin:
+    tests:
+      index:
+        header: "Tests"
+        title: "Title"
+        count: "Count of questions"
+      test:
+        edit: "Edit"
+        delete: "Delete"
+        sure: "Are You sure?"
+      show:
+        title: "Title"
+        hard: "Difficulty"
+        published: "Published"
+        back: "Back"
+      edit:
+        header: "Edit %{title} test"
+      new:
+        create: "Create test"
+      create:
+        success: "Test successfully created"
+      update:
+        success: "Test successfully updated"
+      delete:
+        success: "Test successfully deleted"
+
+  tests:
+    index:
+      header: "Tests"
+      show: "Show"
+      start: "Start!"
+    test:
+      title: "Title"
+      count: "Count of questions"
+      hard: "Difficulty"
+      published: "Published"
+  surveys:
+    show:
+      pass: "Pass the test"
+      progress: "Question"
+      next: "Next"
+    result:
+      correct: "Correct answers"
+      total: "Total qustions"
+      success: "Your testing is succesfull!"
+      fail: "It's a bad result. Try again next time."
+      header: "Test %{title} completed"
