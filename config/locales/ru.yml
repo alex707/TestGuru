@@ -27,6 +27,9 @@ ru:
         category_id: "Категория"
 
   shared:
+    nav:
+      welcome: 'Добро пожаловать'
+      admin_panel: 'Панель администратора'
     errors:
       header:
         few: "Обнаружено %{count} ошибки"
@@ -45,6 +48,7 @@ ru:
         title: "Заголовок"
         count: "Число вопросов"
       test:
+        show: "Показать"
         edit: "Редактировать"
         delete: "Удалить"
         sure: "Вы уверены?"

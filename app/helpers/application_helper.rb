@@ -8,7 +8,18 @@ module ApplicationHelper
   end
 
   def show_flash(key)
-    content_tag :p, flash[key], class: "flash #{key}" if flash[key]
+    case key
+    when 'error'
+      'alert-danger'
+    when 'alert'
+      'alert-warning'
+    when 'notice'
+      'alert-info'
+    when 'success'
+      'alert-success'
+    else
+      key.to_s
+    end
   end
 
   def show_name

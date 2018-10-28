@@ -8,6 +8,12 @@ en:
         create: "Registration"
         update: "Edit info"
 
+  shared:
+    nav:
+      log_out: 'Log out'
+      log_in: 'Log in'
+      sign_up: 'Registration'
+
   activerecord:
     attributes:
       user:

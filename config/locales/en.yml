@@ -25,6 +25,9 @@ en:
         category_id: "Category"
 
   shared:
+    nav:
+      welcome: 'Welcome'
+      admin_panel: 'Admin panel'
     errors:
       header:
         one: "%{count} error detected"
@@ -41,6 +44,7 @@ en:
         title: "Title"
         count: "Count of questions"
       test:
+        show: "Show"
         edit: "Edit"
         delete: "Delete"
         sure: "Are You sure?"

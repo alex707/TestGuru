@@ -9,10 +9,12 @@
   </head>
 
   <body>
-    <%= render 'admin/nav' %>
-    <%= show_flash :alert %>
-    <%= show_flash :info %>
+    <%= render 'shared/nav' %>
+    <div class="container">
+      <%= render 'shared/flash', flash: flash %> 
 
-    <%= yield %>
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
