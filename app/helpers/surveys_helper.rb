@@ -5,9 +5,9 @@ module SurveysHelper
 
   def complete(survey)
     if survey.pass?
-      t('.success')
+      t('surveys.show.result.success')
     else
-      t('.fail')
+      t('surveys.show.result.fail')
     end
   end
 end
