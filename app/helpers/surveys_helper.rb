@@ -5,9 +5,9 @@ module SurveysHelper
 
   def complete(survey)
     if survey.pass?
-      'Your testing is succesfull!'
+      t('surveys.show.result.success')
     else
-      "It's a bad result. Try again next time."
+      t('surveys.show.result.fail')
     end
   end
 end

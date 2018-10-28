@@ -1,7 +1,7 @@
-<h1>Pass the test</h1>
+<h1><%= t('.pass') %></h1>
 
 <p>
-  Question: <%= @survey.number %> / <%= @survey.total %>
+  <%= t('.progress') %>: <%= @survey.number %> / <%= @survey.total %>
 </p>
 
 <b>
@@ -16,5 +16,5 @@
     </p>
   <% end %>
 
-  <p><%= form.submit 'Next' %></p>
+  <p><%= form.submit t('.next') %></p>
 <% end %>

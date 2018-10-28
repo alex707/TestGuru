@@ -1,4 +1,4 @@
-<h1>The <%= @survey.test.title %> Test was completed!</h1>
+<h1><%= t('.header', title: @survey.test.title) %></h1>
 
 <p>
   <p><%= complete(@survey) %></p>
@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  Correct answers: <%= @survey.successfull %>
+  <%= t('.correct') %>: <%= @survey.successfull %>
 </p>
 
 <p>
-  Total questions: <%= @survey.total %>
+  <%= t('.total') %>: <%= @survey.total %>
 </p>
 
 
-<%= link_to 'Back', tests_path %>
+<%= link_to t('admin.tests.show.back'), tests_path %>

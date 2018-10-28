@@ -1,11 +1,11 @@
 <p>
-  Test: <%= @test.title %>
+  <%= t('.title') %>: <%= @test.title %>
 </p>
 <p>
-  Difficulty: <%= @test.level %>
+  <%= t('.hard') %>: <%= @test.level %>
 </p>
 <p>
-  Publication date: <%= @test.created_at.strftime('%Y-%m-%d %H:%M') %>
+  <%= t('.published') %>: <%= @test.created_at.strftime('%Y-%m-%d %H:%M') %>
 </p>
 
 <p>
@@ -22,4 +22,4 @@
 </table>
 
 <%= link_to 'Edit', edit_admin_test_path(@test) %>
-<%= link_to 'Back', admin_tests_path %>
+<%= link_to t('.back'), admin_tests_path %>
