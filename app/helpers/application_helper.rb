@@ -7,8 +7,14 @@ module ApplicationHelper
     link_to repo, "http://github.com/#{author}/#{repo}", target: '_blank'
   end
 
-  def show_flash(key)
-    content_tag :p, flash[key], class: "flash #{key}" if flash[key]
+  def flash_class(key)
+    mapping = {
+      'error' => 'alert-danger',
+      'alert' => 'alert-warning',
+      'notice' => 'alert-info',
+      'success' => 'alert-success'
+    }
+    "alert #{mapping[key]} alert-dismissable"
   end
 
   def show_name

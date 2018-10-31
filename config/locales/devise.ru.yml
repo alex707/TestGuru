@@ -9,6 +9,12 @@ ru:
         create: "Зарегистрироваться"
         update: "Изменить данные"
 
+  shared:
+    nav:
+      log_out: 'Выход'
+      log_in: 'Вход'
+      sign_up: 'Регистрация'
+
   activerecord:
     attributes:
       user:

@@ -1,11 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('.header') %></h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="4"></th>
+      <td><%= t('admin.tests.index.title') %></td>
+      <td><%= t('admin.tests.index.count') %></td>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
 
@@ -14,8 +15,8 @@
       <tr>
         <td><%= test.title %></td>
         <td><%= test.questions.count %></td>
-        <td><%= link_to t('.show'), test_path(test) %></td>
-        <td><%= button_to t('.start'), start_test_path(test) %></td>
+        <td><%= link_to t('.show'), test_path(test), class: 'btn' %></td> 
+        <td><%= button_to t('.start'), start_test_path(test), class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
   </tbody>
