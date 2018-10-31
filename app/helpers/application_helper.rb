@@ -7,19 +7,14 @@ module ApplicationHelper
     link_to repo, "http://github.com/#{author}/#{repo}", target: '_blank'
   end
 
-  def show_flash(key)
-    case key
-    when 'error'
-      'alert-danger'
-    when 'alert'
-      'alert-warning'
-    when 'notice'
-      'alert-info'
-    when 'success'
-      'alert-success'
-    else
-      key.to_s
-    end
+  def flash_class(key)
+    mapping = {
+      'error' => 'alert-danger',
+      'alert' => 'alert-warning',
+      'notice' => 'alert-info',
+      'success' => 'alert-success'
+    }
+    "alert #{mapping[key]} alert-dismissable"
   end
 
   def show_name
