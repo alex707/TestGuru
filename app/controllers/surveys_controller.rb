@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
 
-  before_action :find_survey, only: %i[show update result]
+  before_action :find_survey, only: %i[show update result gist]
 
   def show
   end
@@ -17,6 +17,16 @@ class SurveysController < ApplicationController
     else
       render :show
     end
+  end
+
+  def gist
+    res_url = GistQuestionService.new(@survey).call
+    flash = if res_url
+      { notice: "<a href='#{res_url}'>#{t('.success')}</a>" }
+    else
+      { alert: t('.failure') }
+    end
+    redirect_to @survey, flash
   end
 
   private

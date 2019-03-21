@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :surveys, dependent: :destroy
   has_many :tests, through: :surveys
   has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
+  has_many :gists
 
   def survey(test)
     surveys.order(id: :desc).find_by(test: test)

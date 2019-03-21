@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to "#{gist.question.body[0...25]}#{'...' if gist.question.body.size > 25}",
+    admin_question_path(gist.question) %></td>
+  <td><%= gist.user.email %></td>
+  <td><%= link_to gist.content, gist.url, target: "_blank" %></td>
+</tr>

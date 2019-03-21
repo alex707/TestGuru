@@ -41,6 +41,12 @@ ru:
     completed_test:
       subject: "Вы прошли тест на TestGuru!"
 
+  services:
+    description: "описание"
+    files: "файлы"
+    content: "содержание"
+    about: "Вопрос %{title} от TestGuru"
+
   admin:
     tests:
       index:
@@ -67,6 +73,11 @@ ru:
         success: "Тест успешно изменён"
       delete:
         success: "Тест успешно удалён"
+    gists:
+      index:
+        question: "Вопрос"
+        email: "Email пользователя"
+        gist: "Gist"
 
   tests:
     index:
@@ -83,9 +94,13 @@ ru:
       pass: "Прохождение теста"
       progress: "Прогресс"
       next: "Далее"
+      gist: "Сохранить в Gist"
     result:
       correct: "Число правильных ответов"
       total: "Общее число вопросов"
       header: "Тест %{title} завершён"
       success: "Тест успешно пройден!"
       fail: "Тест провален. Повторите попытку в другой раз."
+    gist:
+      success: "Gist успешно сохранён!"
+      failure: "Во время сохранения Gist произошла ошибка"

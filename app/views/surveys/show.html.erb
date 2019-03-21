@@ -16,5 +16,6 @@
     </p>
   <% end %>
 
+  <p><%= link_to t('.gist'), gist_survey_path(@survey), method: :post %></p>
   <p><%= form.submit t('.next') %></p>
 <% end %>
