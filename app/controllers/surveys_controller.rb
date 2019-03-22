@@ -21,12 +21,7 @@ class SurveysController < ApplicationController
 
   def gist
     res_url = GistQuestionService.new(@survey).call
-    flash = if res_url
-      { notice: "<a href='#{res_url}'>#{t('.success')}</a>" }
-    else
-      { alert: t('.failure') }
-    end
-    redirect_to @survey, flash
+    redirect_to @survey, view_context.flash_message(res_url)
   end
 
   private

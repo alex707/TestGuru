@@ -42,10 +42,11 @@ ru:
       subject: "Вы прошли тест на TestGuru!"
 
   services:
-    description: "описание"
-    files: "файлы"
-    content: "содержание"
-    about: "Вопрос %{title} от TestGuru"
+    gist_question_service:
+      description: "описание"
+      files: "файлы"
+      content: "содержание"
+      about: "Вопрос %{title} от TestGuru"
 
   admin:
     tests:

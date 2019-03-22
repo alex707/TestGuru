@@ -6,14 +6,19 @@ class GitHubClientFaraday
     @http_client = setup_http_client
   end
 
-  def create_gist(params)
-    result = @http_client.post('gists', params) do |faraday|
+  def create_gist(user, question, gist_params)
+    result = @http_client.post('gists', gist_params) do |faraday|
       faraday.headers['Authorization'] = "token #{ENV['ACCESS_TOKEN']}"
       faraday.headers['Content-Type'] = 'application/json'
-      faraday.body = params.to_json
+      faraday.body = gist_params.to_json
     end
 
-    result ? JSON.parse(result.body)['html_url'] : nil
+    Gist.create!({
+      user: user,
+      question: question,
+      url: result ? JSON.parse(result.body)['html_url'] : nil,
+      content: gist_params.to_json
+    }).url
   end
 
   private

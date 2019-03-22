@@ -1,32 +1,20 @@
 class GistQuestionService
-  def initialize(survey, client: nil)
+  def initialize(survey, client: default_client)
     @question = survey.current_question
     @user = survey.user
     @test = @question.test
-    @client = client || GitHubClientOctokit.new
+    @client = client
   end
 
   def call
-    url = @client.create_gist(gist_params)
-    if !url.nil? && !url.empty?
-      Gist.create!({
-        user: @user,
-        question: @question,
-        url: url,
-        content: gist_params.to_json
-      })
-
-      url
-    else
-      nil
-    end
+    @client.create_gist(@user, @question, gist_params)
   end
 
   private
 
   def gist_params
     {
-      description: I18n.t('services.about', title: @test.title),
+      description: I18n.t('services.gist_question_service.about', title: @test.title),
       files: {
         'test-guru-question.txt' => {
           content: gist_content
@@ -37,9 +25,10 @@ class GistQuestionService
   end
 
   def gist_content
-    content = [@question.body]
-    content += @question.answers.pluck(:body)
-    content.join("\n")
+    [@question.body, *@question.answers.pluck(:body)].join("\n")
   end
 
+  def default_client
+    GitHubClientOctokit.new
+  end
 end

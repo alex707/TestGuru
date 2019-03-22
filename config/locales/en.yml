@@ -38,10 +38,11 @@ en:
       subject: "You just completed the TestGuru test!"
 
   services:
-    description: "description"
-    files: "files"
-    content: "content"
-    about: "A question about %{title} from TestGuru"
+    gist_question_service:
+      description: "description"
+      files: "files"
+      content: "content"
+      about: "A question about %{title} from TestGuru"
 
   admin:
     tests:
