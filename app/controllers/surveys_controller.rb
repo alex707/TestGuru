@@ -20,8 +20,19 @@ class SurveysController < ApplicationController
   end
 
   def gist
-    res_url = GistQuestionService.new(@survey).call
-    redirect_to @survey, view_context.flash_message(res_url)
+    res_obj = GistQuestionService.new(@survey).call
+
+    if res_obj.success?
+      if Gist.create!(res_obj.to_hash).valid?
+        flash[:notice] = view_context.link_to(t('.success'), res_obj.url, target: '_blank')
+      else
+        flash[:alert] = t('.failure')
+      end
+    else
+      flash[:alert] = t('.failure')
+    end
+
+    redirect_to @survey
   end
 
   private

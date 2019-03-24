@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to "#{gist.question.body.truncate(25, omission: '...')}",
+  <td><%= link_to "#{gist.question.body.truncate(25)}",
     admin_question_path(gist.question) %></td>
   <td><%= gist.user.email %></td>
   <td><%= link_to gist.content, gist.url, target: "_blank" %></td>

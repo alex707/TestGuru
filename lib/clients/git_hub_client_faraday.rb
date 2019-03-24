@@ -1,5 +1,7 @@
 class GitHubClientFaraday
 
+  require 'services/result_object'
+
   ROOT_ENDPOINT = 'https://api.github.com'
 
   def initialize
@@ -13,12 +15,12 @@ class GitHubClientFaraday
       faraday.body = gist_params.to_json
     end
 
-    Gist.create!({
-      user: user,
-      question: question,
-      url: result ? JSON.parse(result.body)['html_url'] : nil,
-      content: gist_params.to_json
-    }).url
+    Services::ResultObject.new(
+      user,
+      question,
+      result ? JSON.parse(result.body)['html_url'] : nil,
+      gist_params.to_json
+    )
   end
 
   private
