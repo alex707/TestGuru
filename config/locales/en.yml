@@ -37,6 +37,13 @@ en:
     completed_test:
       subject: "You just completed the TestGuru test!"
 
+  services:
+    gist_question_service:
+      description: "description"
+      files: "files"
+      content: "content"
+      about: "A question about %{title} from TestGuru"
+
   admin:
     tests:
       index:
@@ -63,6 +70,11 @@ en:
         success: "Test successfully updated"
       delete:
         success: "Test successfully deleted"
+    gists:
+      index:
+        question: "Question"
+        email: "Email"
+        gist: "Gist"
 
   tests:
     index:
@@ -79,9 +91,13 @@ en:
       pass: "Pass the test"
       progress: "Question"
       next: "Next"
+      gist: "Save to Gist"
     result:
       correct: "Correct answers"
       total: "Total qustions"
       success: "Your testing is succesfull!"
       fail: "It's a bad result. Try again next time."
       header: "Test %{title} completed"
+    gist:
+      success: "Gist was successfully saved!"
+      failure: "An error occurred while saving gist"
