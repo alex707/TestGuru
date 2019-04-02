@@ -74,6 +74,9 @@ ru:
         success: "Тест успешно изменён"
       delete:
         success: "Тест успешно удалён"
+      form_inline:
+        submit: "Ок"
+        cancel: "Отмена"
     gists:
       index:
         question: "Вопрос"

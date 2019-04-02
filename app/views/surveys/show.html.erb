@@ -1,7 +1,16 @@
 <h1><%= t('.pass') %></h1>
 
 <p>
-  <%= t('.progress') %>: <%= @survey.number %> / <%= @survey.total %>
+  <%= t('.progress') %>:
+  <%= content_tag :span, @survey.number, class: 'survey-number', data: { survey_id: @survey.id } %> /
+  <%= content_tag :span, @survey.total, class: 'survey-total', data: { survey_id: @survey.id } %>
+
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 50%;" data-survey-id="<%= @survey.id %>" aria-valuemin="0" aria-valuemax="100">
+      0%
+    </div>
+  </div>
+
 </p>
 
 <b>

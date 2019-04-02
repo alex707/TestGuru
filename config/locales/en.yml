@@ -70,6 +70,9 @@ en:
         success: "Test successfully updated"
       delete:
         success: "Test successfully deleted"
+      form_inline:
+        submit: "Ok"
+        cancel: "Cancel"
     gists:
       index:
         question: "Question"
