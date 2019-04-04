@@ -6,18 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.all.delete_all
+Admin.all.delete_all
+Category.all.delete_all
+Test.all.delete_all
+Survey.all.delete_all
+Question.all.delete_all
+Answer.all.delete_all
+
+
 users = []
 
 [
   { name: 'Arnold', email: 'a@a.a',       password: 'aaaaaa' },
   { name: 'Ben',    email: 'b@b.b',       password: 'bbbbbb' },
-  { name: 'God',    email: 'god@god.god', password: 'godgod' }
 ].each do |attrs|
   u = User.new(attrs)
   u.skip_confirmation!
   u.save!
   users << u
 end
+
+a = Admin.new({
+  name: 'God',
+  email: 'servant.main@gmail.com',
+  password: 'godgod',
+  first_name: 'god',
+  last_name: 'god'
+})
+a.skip_confirmation!
+a.save!
+users << a
 
 cats = Category.create!([
   { title: 'Math' },
@@ -45,10 +64,15 @@ quests = Question.create!([
 
 answers = Answer.create!([
   { body: 'всё будет coca-cola', correct: true, question: quests.first },
+  { body: 'бери от жизни всё', correct: false, question: quests.first },
   { body: 'мир не прост', correct: true, question: quests[1] },
+  { body: 'совсем не прост', correct: false, question: quests[1] },
   { body: 'yellow submorine', correct: true, question: quests[2] },
+  { body: 'o darling!', correct: false, question: quests[2] },
   { body: 'палка о двух концах', correct: true, question: quests[3] },
+  { body: 'сколь верёвочка не вейся, всё равно совьётся в плеть', correct: false, question: quests[3] },
   { body: 'я ломал стекло', correct: true, question: quests[4] },
+  { body: 'дверь мне запили', correct: false, question: quests[4] },
   { body: 'один в поле не воин', correct: true, question: quests[4] },
   { body: 'rm -rf', correct: false, question: quests[4] },
 ])

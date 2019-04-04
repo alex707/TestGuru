@@ -104,3 +104,10 @@ en:
     gist:
       success: "Gist was successfully saved!"
       failure: "An error occurred while saving gist"
+  feedback:
+    new:
+      header: 'Leave a comment'
+      body: 'Comment text'
+      submit: "That's all!"
+    create:
+      flash: "Comment was sent"

@@ -108,3 +108,10 @@ ru:
     gist:
       success: "Gist успешно сохранён!"
       failure: "Во время сохранения Gist произошла ошибка"
+  feedback:
+    new:
+      header: 'Оставить отзыв'
+      body: 'Текст отзыва'
+      submit: "Я всё сказал!!"
+    create:
+      flash: "Отзыв отправлен"
