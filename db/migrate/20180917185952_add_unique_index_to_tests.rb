@@ -1,5 +1,5 @@
 class AddUniqueIndexToTests < ActiveRecord::Migration[5.2]
   def change
-    add_index :tests, [:level, :index], unique: true
+    add_index :tests, [:level]
   end
 end
