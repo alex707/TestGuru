@@ -3,9 +3,7 @@ class FeedbackController < ApplicationController
   end
 
   def create
-    Admin.pluck(:email).each do |email|
-      FeedbackMailer.send_feedback(email, params['body']).deliver_now
-    end
+    FeedbackMailer.send_feedback(current_user.email, params['body']).deliver_now
 
     redirect_to root_path, notice: t('.flash')
   end

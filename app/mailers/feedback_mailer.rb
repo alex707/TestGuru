@@ -1,9 +1,10 @@
 class FeedbackMailer < ApplicationMailer
 
-  def send_feedback(email, body)
+  def send_feedback(user, body)
     @body = body
+    @user = user
 
-    mail to: email
+    mail()
   end
 
 end
