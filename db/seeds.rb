@@ -6,63 +6,74 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.all.delete_all
-Admin.all.delete_all
-Category.all.delete_all
-Test.all.delete_all
-Survey.all.delete_all
-Question.all.delete_all
-Answer.all.delete_all
-
 
 users = []
-
 [
   { name: 'Arnold', email: 'a@a.a',       password: 'aaaaaa' },
   { name: 'Ben',    email: 'b@b.b',       password: 'bbbbbb' },
 ].each do |attrs|
-  u = User.new(attrs)
-  u.skip_confirmation!
-  u.save!
-  users << u
+  users << User.find_or_create_by(email: attrs[:email]) do |u|
+    u.password = attrs[:password]
+    u.name = attrs[:name]
+    u.skip_confirmation!
+    u.save!
+  end
 end
 
-a = Admin.new({
+attrs = {
   name: 'God',
   email: 'servant.main@gmail.com',
   password: 'godgod',
   first_name: 'god',
   last_name: 'god'
-})
-a.skip_confirmation!
-a.save!
-users << a
+}
+users << Admin.find_or_create_by(email: attrs[:email]) do |a|
+  a.password = attrs[:password]
+  a.name = attrs[:name]
+  a.first_name = attrs[:first_name]
+  a.last_name = attrs[:last_name]
+  a.skip_confirmation!
+  a.save!
+end
 
-cats = Category.create!([
+cats = []
+[
   { title: 'Math' },
   { title: 'Bio' },
   { title: 'Chim' }
-])
+].each do |attrs|
+  cats << Category.find_or_create_by(attrs)
+end
 
-tests = Test.create!([
+tests = []
+[
   { title: 'кладезь мудрости', level: 1, category: cats[1], author: users.last },
   { title: 'великие изыскания', level: 5, category: cats.last, author: users.last }
-])
+].each do |t|
+  tests << Test.find_or_create_by(t)
+end
 
-surveys = Survey.create!([
+surveys = []
+[
   { user: users.first, test: tests.first },
   { user: users[1], test: tests.last }
-])
+].each do |s|
+  surveys << Survey.find_or_create_by(s)
+end
 
-quests = Question.create!([
+quests = []
+[
   { body: 'в чём сила?', test: tests.first },
   { body: 'кто виноват?', test: tests.first },
   { body: 'как достать соседа?', test: tests.first },
   { body: 'быть или не быть?', test: tests.last },
   { body: 'когда наступит завтра?', test: tests.last }
-])
+].each do |q|
+  quests << Question.find_or_create_by(q)
+end
 
-answers = Answer.create!([
+answers = []
+[
   { body: 'всё будет coca-cola', correct: true, question: quests.first },
   { body: 'бери от жизни всё', correct: false, question: quests.first },
   { body: 'мир не прост', correct: true, question: quests[1] },
@@ -75,4 +86,6 @@ answers = Answer.create!([
   { body: 'дверь мне запили', correct: false, question: quests[4] },
   { body: 'один в поле не воин', correct: true, question: quests[4] },
   { body: 'rm -rf', correct: false, question: quests[4] },
-])
+].each do |a|
+  answers << Answer.find_or_create_by(a)
+end

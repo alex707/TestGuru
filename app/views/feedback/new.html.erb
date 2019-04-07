@@ -3,11 +3,16 @@
 <%= form_with url: feedback_create_path do |form| %>
 
   <p>
-    <%= form.label :body, t('.body') %><br>
-    <%= form.text_area :body, cols: 50, rows: 10 %>
+    <%= form.label :email %>:<br>
+    <%= form.email_field :email, value: current_user&.email, autocomplete: "email", required: :required %>
+  </p>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, cols: 50, rows: 10, required: :required %>
   </p>
 
   <div class="actions">
-    <%= form.submit t('.submit') %>
+    <%= form.submit %>
   </div>
 <% end %>

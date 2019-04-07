@@ -4,7 +4,7 @@ class FeedbackMailer < ApplicationMailer
     @body = body
     @user = user
 
-    mail()
+    mail
   end
 
 end
