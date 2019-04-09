@@ -18,6 +18,8 @@ ru:
       test:
         create: "Созать тест"
         update: "Изменить тест"
+      submit: "Я всё сказал!!"
+
     button:
       start: "Начать"
     label:
@@ -25,6 +27,9 @@ ru:
         title: "Заголовок"
         level: "Сложность"
         category_id: "Категория"
+      email: "Ваш email"
+      body: "Текст отзыва"
+      submit: "Я всё сказал!!"
 
   shared:
     nav:
@@ -108,3 +113,10 @@ ru:
     gist:
       success: "Gist успешно сохранён!"
       failure: "Во время сохранения Gist произошла ошибка"
+  feedback:
+    new:
+      header: 'Оставить отзыв'
+    create:
+      flash: "Отзыв отправлен"
+      body_blank: "Отзыв не может быть пустым"
+      email_blank: "Email не может быть пустым"

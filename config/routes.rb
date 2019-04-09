@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'tests#index'
+  get 'feedback/new'
+  post 'feedback/create'
 
   devise_for :users, path: :gurus, path_names: { sign_id: :login, sign_out: :logout }
 

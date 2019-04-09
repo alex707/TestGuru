@@ -29,6 +29,6 @@ class GistQuestionService
   end
 
   def default_client
-    GitHubClientOctokit.new
+    ::GitHubClientOctokit.new
   end
 end

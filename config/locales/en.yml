@@ -18,11 +18,19 @@ en:
       test:
         create: "Create test"
         update: "Update test"
+
+      # need for submit in feedback form
+      submit: "That's all!"
+
     label:
       test:
         title: "Title"
         level: "Difficulty"
         category_id: "Category"
+
+      # need for labels in feedback form
+      email: "Your email"
+      body: "Comment text"
 
   shared:
     nav:
@@ -104,3 +112,10 @@ en:
     gist:
       success: "Gist was successfully saved!"
       failure: "An error occurred while saving gist"
+  feedback:
+    new:
+      header: 'Leave a comment'
+    create:
+      flash: "Comment was sent"
+      body_blank: "Comment can't be blank"
+      email_blank: "Email can't be blank"
