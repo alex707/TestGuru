@@ -11,8 +11,8 @@ users = []
 [
   { name: 'Arnold', email: 'a@a.a',       password: 'aaaaaa' },
   { name: 'Ben',    email: 'b@b.b',       password: 'bbbbbb' },
-].each do |attrs|
-  users << User.find_or_create_by(email: attrs[:email]) do |u|
+].map do |attrs|
+  User.find_or_create_by(email: attrs[:email]) do |u|
     u.password = attrs[:password]
     u.name = attrs[:name]
     u.skip_confirmation!
@@ -36,44 +36,39 @@ users << Admin.find_or_create_by(email: attrs[:email]) do |a|
   a.save!
 end
 
-cats = []
-[
+cats = [
   { title: 'Math' },
   { title: 'Bio' },
   { title: 'Chim' }
-].each do |attrs|
-  cats << Category.find_or_create_by(attrs)
+].map do |attrs|
+  Category.find_or_create_by(attrs)
 end
 
-tests = []
-[
+tests = [
   { title: 'кладезь мудрости', level: 1, category: cats[1], author: users.last },
   { title: 'великие изыскания', level: 5, category: cats.last, author: users.last }
-].each do |t|
-  tests << Test.find_or_create_by(t)
+].map do |t|
+  Test.find_or_create_by(t)
 end
 
-surveys = []
-[
+surveys = [
   { user: users.first, test: tests.first },
   { user: users[1], test: tests.last }
-].each do |s|
-  surveys << Survey.find_or_create_by(s)
+].map do |s|
+  Survey.find_or_create_by(s)
 end
 
-quests = []
-[
+quests = [
   { body: 'в чём сила?', test: tests.first },
   { body: 'кто виноват?', test: tests.first },
   { body: 'как достать соседа?', test: tests.first },
   { body: 'быть или не быть?', test: tests.last },
   { body: 'когда наступит завтра?', test: tests.last }
-].each do |q|
-  quests << Question.find_or_create_by(q)
+].map do |q|
+  Question.find_or_create_by(q)
 end
 
-answers = []
-[
+answers = [
   { body: 'всё будет coca-cola', correct: true, question: quests.first },
   { body: 'бери от жизни всё', correct: false, question: quests.first },
   { body: 'мир не прост', correct: true, question: quests[1] },
@@ -86,6 +81,6 @@ answers = []
   { body: 'дверь мне запили', correct: false, question: quests[4] },
   { body: 'один в поле не воин', correct: true, question: quests[4] },
   { body: 'rm -rf', correct: false, question: quests[4] },
-].each do |a|
-  answers << Answer.find_or_create_by(a)
+].map do |a|
+  Answer.find_or_create_by(a)
 end
