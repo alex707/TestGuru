@@ -1,0 +1,15 @@
+<p>
+  <%= t('admin.badges.index.name') %>: <%= @badge.name %>
+</p>
+<p>
+  <%= t('admin.badges.index.description') %>: <%= @badge.description %>
+</p>
+<p>
+  <%= t('admin.badges.index.icon') %>: <%= @badge.icon %>
+</p>
+<p>
+  <%= t('admin.badges.index.condition') %>: <%= @badge.condition %>
+</p>
+
+<%= link_to t('admin.tests.test.edit'), edit_admin_badge_path(@badge) %>
+<%= link_to t('admin.tests.show.back'), admin_badges_path %>

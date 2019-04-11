@@ -20,6 +20,10 @@ ru:
         update: "Изменить тест"
       submit: "Я всё сказал!!"
 
+      badge:
+        update: "Изменить бейдж"
+        create: "Сохранить бейдж"
+
     button:
       start: "Начать"
     label:
@@ -27,9 +31,16 @@ ru:
         title: "Заголовок"
         level: "Сложность"
         category_id: "Категория"
+
       email: "Ваш email"
       body: "Текст отзыва"
       submit: "Я всё сказал!!"
+
+      badge:
+        name: "Наименование"
+        icon: "Изображение"
+        description: "Описание"
+        condition: "Условие"
 
   shared:
     nav:
@@ -87,6 +98,29 @@ ru:
         question: "Вопрос"
         email: "Email пользователя"
         gist: "Gist"
+    badges:
+      index:
+        header: "Имеющиеся бейджи"
+        name: "Наименование"
+        icon: "Изображение"
+        description: "Описание"
+        condition: "Условие"
+        create: "Создать бейдж"
+      new:
+        create: "Создание бейджа"
+      edit:
+        header: "Реактирование бейджа %{name}"
+      create:
+        success: "Бейдж создан"
+      update:
+        success: "Бейдж обновлён"
+      delete:
+        success: "Бейдж удалён"
+      badge:
+        show: "Показать"
+        edit: "Изменить"
+        delete: "Удалить"
+        sure: "Вы уверены, что хотите удалить бейдж"
 
   tests:
     index:
@@ -110,6 +144,7 @@ ru:
       header: "Тест %{title} завершён"
       success: "Тест успешно пройден!"
       fail: "Тест провален. Повторите попытку в другой раз."
+      award: "У Вас новые награды"
     gist:
       success: "Gist успешно сохранён!"
       failure: "Во время сохранения Gist произошла ошибка"
@@ -120,3 +155,11 @@ ru:
       flash: "Отзыв отправлен"
       body_blank: "Отзыв не может быть пустым"
       email_blank: "Email не может быть пустым"
+  badges:
+    index:
+      header: "Существующие бейджи"
+      name: "Наименование"
+      icon: "Изображение"
+      description: "Описание"
+    my:
+      header: "Мои бейджи"

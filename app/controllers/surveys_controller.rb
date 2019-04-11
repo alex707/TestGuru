@@ -6,6 +6,8 @@ class SurveysController < ApplicationController
   end
 
   def result
+    @badges = Badge.check(@survey)
+    @survey.user.award(@badges)
   end
 
   def update

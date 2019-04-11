@@ -1,0 +1,22 @@
+<h1><%= t('.header') %></h1>
+
+<p>
+  <%= link_to t('.create'), new_admin_badge_path %>
+</p>
+
+<%= render 'shared/errors', resource: @badge %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.icon') %></th>
+      <th><%= t('.description') %></th>
+      <th><%= t('.condition') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @badges %>
+  </tbody>
+</table>
