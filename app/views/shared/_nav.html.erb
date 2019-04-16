@@ -13,7 +13,7 @@
                     aria: { expanded: 'false' }
         %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'All', badges_index_path, class: 'dropdown-item' %>
+          <%= link_to 'All', current_user&.admin? ? admin_badges_path : badges_index_path, class: 'dropdown-item' %>
           <%= link_to 'My', badges_my_path, class: 'dropdown-item' %>
         </div>
       </li>

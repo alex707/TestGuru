@@ -21,5 +21,15 @@
     <%= form.text_field :condition, id: :badge_condition %>
   </p>
 
+  <p>
+    <%= form.label :category_id %><br>
+    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: t('.cat_prompt') %>
+  </p>
+
+  <p>
+    <%= form.label :level %><br>
+    <%= form.text_field :level, id: :badge_level %>
+  </p>
+
   <p><%= form.submit %></p>
 <% end %>

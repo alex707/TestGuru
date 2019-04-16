@@ -99,9 +99,9 @@ answers = [
 end
 
 badges = [
-  { name: 'Гуру Бэкэнда', condition: 0, icon: 'badge-0.jpg', description: 'За успешное прохождение темы "Backend"' },
+  { name: 'Гуру Бэкэнда', condition: 0, icon: 'badge-0.jpg', description: 'За успешное прохождение темы "Backend"', category_id: cats[3].id },
   { name: 'Баловень судьбы', condition: 1, icon: 'badge-1.jpg', description: 'За успешное прохождение теста c первой попытки' },
-  { name: 'Гуру Уровня', condition: 2, icon: 'badge-2.jpg', description: 'За успешное прохождение всех тестов одного уровня' },
+  { name: 'Гуру Уровня 4', condition: 2, icon: 'badge-2.jpg', description: 'За успешное прохождение всех тестов уровня 4', level: 4 },
 ].map do |b|
   Badge.find_or_create_by(b)
 end

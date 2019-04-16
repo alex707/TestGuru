@@ -41,6 +41,8 @@ ru:
         icon: "Изображение"
         description: "Описание"
         condition: "Условие"
+        category_id: "Категория"
+        level: "Уровень"
 
   shared:
     nav:
@@ -70,6 +72,7 @@ ru:
         header: "Доступные тесты"
         title: "Заголовок"
         count: "Число вопросов"
+
       test:
         show: "Показать"
         edit: "Редактировать"
@@ -78,6 +81,7 @@ ru:
       show:
         title: "Заголовок"
         hard: "Сложность"
+        category: "Категория"
         published: "Опубликовано"
         back: "Назад"
       edit:
@@ -121,6 +125,8 @@ ru:
         edit: "Изменить"
         delete: "Удалить"
         sure: "Вы уверены, что хотите удалить бейдж"
+      form:
+        cat_prompt: "Выберите категорию"
 
   tests:
     index:

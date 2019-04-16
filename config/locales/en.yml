@@ -37,10 +37,12 @@ en:
       body: "Comment text"
 
       badge:
-        name: "Наименование"
-        icon: "Изображение"
-        description: "Описание"
-        condition: "Условие"
+        name: "Name"
+        icon: "Picture"
+        description: "Description"
+        condition: "Condition"
+        category_id: "Category"
+        level: "Level"
 
   shared:
     nav:
@@ -76,6 +78,7 @@ en:
       show:
         title: "Title"
         hard: "Difficulty"
+        category: "Category"
         published: "Published"
         back: "Back"
       edit:
@@ -120,6 +123,8 @@ en:
         success: "Badge successfully updated"
       delete:
         success: "Badge successfully deleted"
+      form:
+        cat_prompt: "Select Category"
 
   tests:
     index:

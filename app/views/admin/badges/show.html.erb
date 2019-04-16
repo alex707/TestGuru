@@ -10,6 +10,12 @@
 <p>
   <%= t('admin.badges.index.condition') %>: <%= @badge.condition %>
 </p>
+<p>
+  <%= t('admin.tests.show.category') %>: <%= @badge.category_id %>
+</p>
+<p>
+  <%= t('admin.tests.show.hard') %>: <%= @badge.level %>
+</p>
 
 <%= link_to t('admin.tests.test.edit'), edit_admin_badge_path(@badge) %>
 <%= link_to t('admin.tests.show.back'), admin_badges_path %>

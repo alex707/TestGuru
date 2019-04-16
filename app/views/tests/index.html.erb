@@ -9,6 +9,8 @@
         <%= octicon 'arrow-down', class: 'text-success hide' %>
       </th>
       <th><%= t('admin.tests.index.count') %></th>
+      <th><%= t('admin.tests.show.category') %></th>
+      <th><%= t('admin.tests.show.hard') %></th>
       <th></th>
       <th></th>
     </tr>
@@ -19,6 +21,8 @@
       <tr>
         <td><%= test.title %></td>
         <td><%= test.questions.count %></td>
+        <td><%= test.category.title %></td>
+        <td><%= test.level %></td>
         <td><%= link_to t('.show'), test_path(test), class: 'btn' %></td>
         <td><%= button_to t('.start'), start_test_path(test), class: 'btn btn-primary' %></td>
       </tr>
