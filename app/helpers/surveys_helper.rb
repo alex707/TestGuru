@@ -1,10 +1,10 @@
 module SurveysHelper
   def color(survey)
-    survey.pass? ? 'green' : 'red'
+    survey.success? ? 'green' : 'red'
   end
 
   def complete(survey)
-    if survey.pass?
+    if survey.success?
       t('surveys.show.result.success')
     else
       t('surveys.show.result.fail')

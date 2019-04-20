@@ -17,18 +17,12 @@
   </p>
 
   <p>
-    <%= form.label :condition %><br>
-    <%= form.text_field :condition, id: :badge_condition %>
-  </p>
-
-  <p>
-    <%= form.label :category_id %><br>
-    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: t('.cat_prompt') %>
-  </p>
-
-  <p>
-    <%= form.label :level %><br>
-    <%= form.text_field :level, id: :badge_level %>
+    <%= form.label :param %><br>
+    <%= form.text_field :param, id: :badge_param %>
+    <i>
+      example:
+      {"level": 4}, {"category": 3}
+    </i>
   </p>
 
   <p><%= form.submit %></p>

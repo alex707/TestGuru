@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_181903) do
+ActiveRecord::Schema.define(version: 2019_04_15_180607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,9 @@ ActiveRecord::Schema.define(version: 2019_04_15_181903) do
     t.string "name"
     t.string "icon"
     t.string "description"
-    t.integer "condition"
+    t.string "param"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.integer "level"
-    t.index ["category_id"], name: "index_badges_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -77,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_181903) do
     t.datetime "updated_at", null: false
     t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
-    t.boolean "pass"
+    t.boolean "success"
     t.index ["current_question_id"], name: "index_surveys_on_current_question_id"
     t.index ["test_id"], name: "index_surveys_on_test_id"
     t.index ["user_id"], name: "index_surveys_on_user_id"
@@ -126,7 +123,6 @@ ActiveRecord::Schema.define(version: 2019_04_15_181903) do
   add_foreign_key "answers", "questions"
   add_foreign_key "awards", "badges"
   add_foreign_key "awards", "users"
-  add_foreign_key "badges", "categories"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

@@ -6,15 +6,14 @@ class SurveysController < ApplicationController
   end
 
   def result
-    @badges = @survey.pass? ? Award.check(@survey) : []
+    @badges = @survey.success? ? BadgeCheckerService.check(@survey) : []
   end
 
   def update
     @survey.accept!(params[:answer_ids])
 
     if @survey.completed?
-      @badges = @survey.pass? ? Award.check(@survey) : []
-      @badges.each{|b| Award.create!(user: @survey.user, badge: b)} if @badges.any?
+      BadgeCheckerService.award(@survey)
 
       TestsMailer.completed_test(@survey).deliver_now
       redirect_to result_survey_path(@survey)

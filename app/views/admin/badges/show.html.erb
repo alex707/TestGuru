@@ -8,13 +8,13 @@
   <%= t('admin.badges.index.icon') %>: <%= @badge.icon %>
 </p>
 <p>
-  <%= t('admin.badges.index.condition') %>: <%= @badge.condition %>
+  <%= t('admin.badges.index.param') %>: <%= @badge.param %>
 </p>
 <p>
-  <%= t('admin.tests.show.category') %>: <%= @badge.category_id %>
+  <%= t('admin.tests.show.category') %>: <%= Category.find_by(id: JSON.parse(@badge.param)['category'])&.title %>
 </p>
 <p>
-  <%= t('admin.tests.show.hard') %>: <%= @badge.level %>
+  <%= t('admin.tests.show.hard') %>: <%= JSON.parse(@badge.param)['level'] %>
 </p>
 
 <%= link_to t('admin.tests.test.edit'), edit_admin_badge_path(@badge) %>

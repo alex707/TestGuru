@@ -108,7 +108,7 @@ ru:
         name: "Наименование"
         icon: "Изображение"
         description: "Описание"
-        condition: "Условие"
+        param: "Параметр"
         create: "Создать бейдж"
       new:
         create: "Создание бейджа"
@@ -140,7 +140,7 @@ ru:
       published: "Опубликовано"
   surveys:
     show:
-      pass: "Прохождение теста"
+      success: "Прохождение теста"
       progress: "Прогресс"
       next: "Далее"
       gist: "Сохранить в Gist"

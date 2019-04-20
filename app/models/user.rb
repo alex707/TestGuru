@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :tests, through: :surveys
   has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
   has_many :gists
+  has_many :awards
   has_many :badges, through: :awards
 
   def survey(test)

@@ -4,6 +4,6 @@ class BadgesController < ApplicationController
   end
 
   def my
-    @badges = Award.all.where(user: 1).map(&:badge)
+    @badges = current_user.badges
   end
 end

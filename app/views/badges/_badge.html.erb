@@ -2,6 +2,6 @@
   <td><%= badge.name %></td>
   <td><%= badge.description %></td>
   <td><%= badge.icon %></td>
-  <td><%= Category.find(badge.category_id).title if badge.category_id %></td>
-  <td><%= badge.level %></td>
+  <td><%= Category.find_by(id: JSON.parse(badge.param)['category'])&.title %></td>
+  <td><%= JSON.parse(badge.param)['level'] %></td>
 </tr>
