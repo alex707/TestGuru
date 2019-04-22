@@ -140,7 +140,7 @@ ru:
       published: "Опубликовано"
   surveys:
     show:
-      success: "Прохождение теста"
+      pass: "Прохождение теста"
       progress: "Прогресс"
       next: "Далее"
       gist: "Сохранить в Gist"

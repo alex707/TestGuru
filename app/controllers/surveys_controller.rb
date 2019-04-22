@@ -6,14 +6,14 @@ class SurveysController < ApplicationController
   end
 
   def result
-    @badges = @survey.success? ? BadgeCheckerService.check(@survey) : []
+    @badges = BadgeCheckerService.new(@survey).check
   end
 
   def update
     @survey.accept!(params[:answer_ids])
 
     if @survey.completed?
-      BadgeCheckerService.award(@survey)
+      BadgeCheckerService.new(@survey).award
 
       TestsMailer.completed_test(@survey).deliver_now
       redirect_to result_survey_path(@survey)

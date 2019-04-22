@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 2019_04_15_180607) do
     t.string "name"
     t.string "icon"
     t.string "description"
-    t.string "param"
+    t.string "rule"
+    t.integer "param"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_180607) do
     t.datetime "updated_at", null: false
     t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
-    t.boolean "success"
+    t.boolean "success", default: false, null: false
     t.index ["current_question_id"], name: "index_surveys_on_current_question_id"
     t.index ["test_id"], name: "index_surveys_on_test_id"
     t.index ["user_id"], name: "index_surveys_on_user_id"

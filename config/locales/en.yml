@@ -138,7 +138,7 @@ en:
       published: "Published"
   surveys:
     show:
-      success: "Pass the test"
+      pass: "Pass the test"
       progress: "Question"
       next: "Next"
       gist: "Save to Gist"

@@ -5,7 +5,7 @@ class Survey < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_next_question, on: %i[create update]
-  scope :successed, -> { where(success: true) }
+  scope :passed, -> { where(success: true) }
 
   def completed?
     current_question.nil?
@@ -13,7 +13,7 @@ class Survey < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
-    self.success = self.success?
+    self.success = self.pass?
 
     save!
   end
@@ -34,7 +34,7 @@ class Survey < ApplicationRecord
     ( (successfull.to_f / total.to_f).round(2) * 100 ).to_i
   end
 
-  def success?
+  def pass?
     result >= 85 ? true : false
   end
 

@@ -17,12 +17,13 @@
   </p>
 
   <p>
+    <%= form.label :rule %><br>
+    <%= form.text_field :rule, id: :badge_rule %>
+  </p>
+
+  <p>
     <%= form.label :param %><br>
     <%= form.text_field :param, id: :badge_param %>
-    <i>
-      example:
-      {"level": 4}, {"category": 3}
-    </i>
   </p>
 
   <p><%= form.submit %></p>
