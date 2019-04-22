@@ -1,0 +1,16 @@
+<h1><%= t('.header') %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('badges.index.name') %></th>
+      <th><%= t('badges.index.description') %></th>
+      <th><%= t('badges.index.icon') %></th>
+      <th><%= t('admin.tests.show.category') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @badges %>
+  </tbody>
+</table>

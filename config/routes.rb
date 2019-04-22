@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
   root 'tests#index'
+
   get 'feedback/new'
   post 'feedback/create'
+
+  get 'badges/index'
+  get 'badges/my'
 
   devise_for :users, path: :gurus, path_names: { sign_id: :login, sign_out: :logout }
 
@@ -27,5 +31,6 @@ Rails.application.routes.draw do
     end
 
     resources :gists, only: :index
+    resources :badges
   end
 end

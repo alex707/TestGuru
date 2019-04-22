@@ -39,48 +39,69 @@ end
 cats = [
   { title: 'Math' },
   { title: 'Bio' },
-  { title: 'Chim' }
+  { title: 'Chim' },
+  { title: 'Backend' }
 ].map do |attrs|
   Category.find_or_create_by(attrs)
 end
 
 tests = [
-  { title: 'кладезь мудрости', level: 1, category: cats[1], author: users.last },
-  { title: 'великие изыскания', level: 5, category: cats.last, author: users.last }
+  { title: 'Живое/неживое', level: 1, category: cats[1], author: users.last },
+  { title: 'Жидкое/нежидкое', level: 5, category: cats[2], author: users.last },
+  { title: 'Ruby', level: 5, category: cats[3], author: users.last },
+  { title: 'Python', level: 5, category: cats[3], author: users.last },
+  { title: 'C++', level: 4, category: cats[3], author: users.last },
 ].map do |t|
   Test.find_or_create_by(t)
 end
 
-surveys = [
-  { user: users.first, test: tests.first },
-  { user: users[1], test: tests.last }
-].map do |s|
-  Survey.find_or_create_by(s)
-end
-
 quests = [
-  { body: 'в чём сила?', test: tests.first },
-  { body: 'кто виноват?', test: tests.first },
-  { body: 'как достать соседа?', test: tests.first },
-  { body: 'быть или не быть?', test: tests.last },
-  { body: 'когда наступит завтра?', test: tests.last }
+  { body: 'Моря', test: tests[0] },
+  { body: 'Горы', test: tests[0] },
+  { body: 'Равнины', test: tests[0] },
+  { body: 'Погода', test: tests[1] },
+  { body: 'Запчасти', test: tests[1] },
+  { body: 'Ruby похож на...', test: tests[2] },
+  { body: 'Ruby не похож на...', test: tests[2] },
+  { body: 'Python похож на...', test: tests[3] },
+  { body: 'Python не похож на...', test: tests[3] },
+  { body: 'C++ похож на...', test: tests[4] },
+  { body: 'C++ не похож на...', test: tests[4] },
 ].map do |q|
   Question.find_or_create_by(q)
 end
 
 answers = [
-  { body: 'всё будет coca-cola', correct: true, question: quests.first },
-  { body: 'бери от жизни всё', correct: false, question: quests.first },
-  { body: 'мир не прост', correct: true, question: quests[1] },
-  { body: 'совсем не прост', correct: false, question: quests[1] },
-  { body: 'yellow submorine', correct: true, question: quests[2] },
-  { body: 'o darling!', correct: false, question: quests[2] },
-  { body: 'палка о двух концах', correct: true, question: quests[3] },
-  { body: 'сколь верёвочка не вейся, всё равно совьётся в плеть', correct: false, question: quests[3] },
-  { body: 'я ломал стекло', correct: true, question: quests[4] },
-  { body: 'дверь мне запили', correct: false, question: quests[4] },
-  { body: 'один в поле не воин', correct: true, question: quests[4] },
-  { body: 'rm -rf', correct: false, question: quests[4] },
+  { body: 'Краб', correct: true, question: quests[0] },
+  { body: 'Камень', correct: false, question: quests[0] },
+  { body: 'Птица', correct: true, question: quests[1] },
+  { body: 'Камень', correct: false, question: quests[1] },
+  { body: 'Волк', correct: true, question: quests[2] },
+  { body: 'Камень', correct: false, question: quests[2] },
+  { body: 'Дождь', correct: true, question: quests[3] },
+  { body: 'Ветер', correct: false, question: quests[3] },
+  { body: 'Термопаста', correct: true, question: quests[4] },
+  { body: 'Вентилятор', correct: false, question: quests[4] },
+  { body: 'Asm', correct: false, question: quests[5] },
+  { body: 'Python', correct: true, question: quests[5] },
+  { body: 'Asm', correct: true, question: quests[6] },
+  { body: 'Python', correct: false, question: quests[6] },
+  { body: 'Asm', correct: false, question: quests[7] },
+  { body: 'Ruby', correct: true, question: quests[7] },
+  { body: 'Asm', correct: true, question: quests[8] },
+  { body: 'Ruby', correct: false, question: quests[8] },
+  { body: 'SQL', correct: false, question: quests[9] },
+  { body: 'C', correct: true, question: quests[9] },
+  { body: 'SQL', correct: true, question: quests[10] },
+  { body: 'C', correct: false, question: quests[10] },
 ].map do |a|
   Answer.find_or_create_by(a)
+end
+
+badges = [
+  { name: 'Гуру Бэкэнда', icon: 'badge-0.jpg', description: 'За успешное прохождение темы "Backend"', rule: 'category', param: cats[3].id },
+  { name: 'Баловень судьбы', icon: 'badge-1.jpg', description: 'За успешное прохождение теста c первой попытки', rule: 'count', param: 1 },
+  { name: 'Гуру Уровня 4', icon: 'badge-2.jpg', description: 'За успешное прохождение всех тестов уровня 4', rule: 'level', param: 4 },
+].map do |b|
+  Badge.find_or_create_by(b)
 end

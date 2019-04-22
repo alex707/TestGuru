@@ -1,0 +1,24 @@
+<p>
+  <%= t('admin.badges.index.name') %>: <%= @badge.name %>
+</p>
+<p>
+  <%= t('admin.badges.index.description') %>: <%= @badge.description %>
+</p>
+<p>
+  <%= t('admin.badges.index.icon') %>: <%= @badge.icon %>
+</p>
+<p>
+  <%= t('admin.badges.index.rule') %>: <%= @badge.rule %>
+</p>
+<p>
+  <%= t('admin.badges.index.param') %>: <%= @badge.param %>
+</p>
+<p>
+  <%= t('admin.tests.show.category') %>: <%= Category.find_by(id: @badge.param).title if @badge.rule == 'category' %>
+</p>
+<p>
+  <%= t('admin.tests.show.hard') %>: <%= @badge.param if @badge.rule == 'level' %>
+</p>
+
+<%= link_to t('admin.tests.test.edit'), edit_admin_badge_path(@badge) %>
+<%= link_to t('admin.tests.show.back'), admin_badges_path %>

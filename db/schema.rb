@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_094604) do
+ActiveRecord::Schema.define(version: 2019_04_15_180607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,25 @@ ActiveRecord::Schema.define(version: 2019_02_16_094604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "awards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_awards_on_badge_id"
+    t.index ["user_id"], name: "index_awards_on_user_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.string "description"
+    t.string "rule"
+    t.integer "param"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -56,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_02_16_094604) do
     t.datetime "updated_at", null: false
     t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
+    t.boolean "success", default: false, null: false
     t.index ["current_question_id"], name: "index_surveys_on_current_question_id"
     t.index ["test_id"], name: "index_surveys_on_test_id"
     t.index ["user_id"], name: "index_surveys_on_user_id"
@@ -102,6 +122,8 @@ ActiveRecord::Schema.define(version: 2019_02_16_094604) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "awards", "badges"
+  add_foreign_key "awards", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

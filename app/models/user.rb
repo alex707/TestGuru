@@ -7,8 +7,10 @@ class User < ApplicationRecord
 
   has_many :surveys, dependent: :destroy
   has_many :tests, through: :surveys
-  has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id, dependent: :destroy
+  has_many :own_tests, class_name: 'Test', dependent: :nullify, foreign_key: :author_id
   has_many :gists
+  has_many :awards
+  has_many :badges, through: :awards
 
   def survey(test)
     surveys.order(id: :desc).find_by(test: test)
@@ -21,5 +23,4 @@ class User < ApplicationRecord
   def admin?
     is_a?(Admin)
   end
-
 end

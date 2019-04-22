@@ -22,6 +22,10 @@ en:
       # need for submit in feedback form
       submit: "That's all!"
 
+      badge:
+        update: "Изменить бейдж"
+        create: "Сохранить бейдж"
+
     label:
       test:
         title: "Title"
@@ -31,6 +35,14 @@ en:
       # need for labels in feedback form
       email: "Your email"
       body: "Comment text"
+
+      badge:
+        name: "Name"
+        icon: "Picture"
+        description: "Description"
+        condition: "Condition"
+        category_id: "Category"
+        level: "Level"
 
   shared:
     nav:
@@ -66,6 +78,7 @@ en:
       show:
         title: "Title"
         hard: "Difficulty"
+        category: "Category"
         published: "Published"
         back: "Back"
       edit:
@@ -86,6 +99,32 @@ en:
         question: "Question"
         email: "Email"
         gist: "Gist"
+
+    badges:
+      index:
+        header: "Badges"
+        name: "Name"
+        icon: "Icon"
+        description: "Description"
+        param: "Param"
+        create: "Create badge"
+      badge:
+        show: "SHow"
+        edit: "Edit"
+        delete: "Delete"
+        sure: "Are you shure you want to delete badge"
+      edit:
+        header: "Edit %{name} badge"
+      new:
+        create: "Create badge"
+      create:
+        success: "Badge successfully created"
+      update:
+        success: "Badge successfully updated"
+      delete:
+        success: "Badge successfully deleted"
+      form:
+        cat_prompt: "Select Category"
 
   tests:
     index:
@@ -109,6 +148,7 @@ en:
       success: "Your testing is succesfull!"
       fail: "It's a bad result. Try again next time."
       header: "Test %{title} completed"
+      award: "You are awarded"
     gist:
       success: "Gist was successfully saved!"
       failure: "An error occurred while saving gist"
@@ -119,3 +159,11 @@ en:
       flash: "Comment was sent"
       body_blank: "Comment can't be blank"
       email_blank: "Email can't be blank"
+  badges:
+    index:
+      header: "All badges"
+      name: "Name"
+      icon: "Icon"
+      description: "Description"
+    my:
+      header: "My badges"

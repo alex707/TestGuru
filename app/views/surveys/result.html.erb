@@ -13,5 +13,15 @@
   <%= t('.total') %>: <%= @survey.total %>
 </p>
 
+<p>
+  <% if @badges.any? %>
+    <%= t('.award') %>:
+    <table class="table">
+      <tbody>
+        <%= render partial: 'badge', collection: @badges %>
+      </tbody>
+    </table>
+  <% end %>
+</p>
 
 <%= link_to t('admin.tests.show.back'), tests_path %>
