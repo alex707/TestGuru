@@ -23,7 +23,7 @@
   <span class="navbar-text">
     <% if user_signed_in? %>
       <%= t('.welcome') %>, <b><%= show_name %></b>Guru |
-      <%= current_user.admin? ? link_to(t('.admin_panel'), admin_tests_path) : link_to(t('feedback.new.header'), feedback_new_path) %> |
+      <%= current_user.admin? ? link_to(t('.admin_panel'), admin_tests_path) : link_to(t('feedback.new.header'), new_feedback_path) %> |
       <%= link_to(t('.log_out'), destroy_user_session_path, method: :delete) %>
     <% else %>
       <%= link_to(t('.log_in'), user_session_path) %> |
