@@ -153,6 +153,7 @@ en:
       fail: "It's a bad result. Try again next time."
       header: "Test %{title} completed"
       award: "You are awarded"
+      time_out: "Time out"
     gist:
       success: "Gist was successfully saved!"
       failure: "An error occurred while saving gist"
