@@ -31,6 +31,7 @@ en:
         title: "Title"
         level: "Difficulty"
         category_id: "Category"
+        timer: "Allowable time"
 
       # need for labels in feedback form
       email: "Your email"
@@ -75,12 +76,14 @@ en:
         edit: "Edit"
         delete: "Delete"
         sure: "Are You sure?"
+        timer: "Allotted time"
       show:
         title: "Title"
         hard: "Difficulty"
         category: "Category"
         published: "Published"
         back: "Back"
+        timer: "Allowable time"
       edit:
         header: "Edit %{title} test"
       new:
@@ -141,6 +144,7 @@ en:
       pass: "Pass the test"
       progress: "Question"
       next: "Next"
+      timer: "Time to left"
       gist: "Save to Gist"
     result:
       correct: "Correct answers"
@@ -149,6 +153,7 @@ en:
       fail: "It's a bad result. Try again next time."
       header: "Test %{title} completed"
       award: "You are awarded"
+      time_out: "Time out"
     gist:
       success: "Gist was successfully saved!"
       failure: "An error occurred while saving gist"

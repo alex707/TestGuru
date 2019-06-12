@@ -46,11 +46,11 @@ cats = [
 end
 
 tests = [
-  { title: 'Живое/неживое', level: 1, category: cats[1], author: users.last },
-  { title: 'Жидкое/нежидкое', level: 5, category: cats[2], author: users.last },
-  { title: 'Ruby', level: 5, category: cats[3], author: users.last },
-  { title: 'Python', level: 5, category: cats[3], author: users.last },
-  { title: 'C++', level: 4, category: cats[3], author: users.last },
+  { title: 'Живое/неживое', level: 1, category: cats[1], author: users.last, timer: 60 },
+  { title: 'Жидкое/нежидкое', level: 5, category: cats[2], author: users.last, timer: 60 },
+  { title: 'Ruby', level: 5, category: cats[3], author: users.last, timer: 60 },
+  { title: 'Python', level: 5, category: cats[3], author: users.last, timer: 60 },
+  { title: 'C++', level: 4, category: cats[3], author: users.last, timer: 60 },
 ].map do |t|
   Test.find_or_create_by(t)
 end

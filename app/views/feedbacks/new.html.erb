@@ -1,6 +1,6 @@
 <h1><%= t('.header') %></h1>
 
-<%= form_with url: feedback_create_path do |form| %>
+<%= form_with model: @feedback do |form| %>
 
   <p>
     <%= form.label :email %>:<br>

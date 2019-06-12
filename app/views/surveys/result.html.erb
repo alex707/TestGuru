@@ -3,6 +3,7 @@
 <p>
   <p><%= complete(@survey) %></p>
   <p style="color:<%= color(@survey) %>;">(<%= @survey.result %>%)</p>
+  <%= content_tag(:p, t('.time_out')) unless @survey.success? %>
 </p>
 
 <p>

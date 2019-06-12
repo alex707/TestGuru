@@ -13,7 +13,7 @@ class Survey < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
-    self.success = self.pass?
+    self.success = self.pass? && !self.past?
 
     save!
   end
@@ -36,6 +36,10 @@ class Survey < ApplicationRecord
 
   def pass?
     result >= 85 ? true : false
+  end
+
+  def past?
+    test.timer? && (created_at + test.timer.seconds).past?
   end
 
   private

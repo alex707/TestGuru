@@ -3,6 +3,7 @@ class SurveysController < ApplicationController
   before_action :find_survey, only: %i[show update result gist]
 
   def show
+    redirect_to result_survey_path(@survey) if @survey.past?
   end
 
   def result
