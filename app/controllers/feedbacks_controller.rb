@@ -7,7 +7,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     @feedback.feedback
 
-    respond_with @feedback, location: root_path
+    redirect_to root_path
   end
 
   private

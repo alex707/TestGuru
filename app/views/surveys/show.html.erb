@@ -19,11 +19,7 @@
   <%= @survey.current_question.body %>
 </b>
 
-<script>
-  var surveyFrm = 'survey_<%= @survey.id %>';
-</script>
-
-<%= form_with url: survey_path(@survey), local: true, method: :put, id: "survey_#{@survey.id}" do |form| %>
+<%= form_with url: survey_path(@survey), local: true, method: :put, class: 'survey-form', data: { survey_id: @survey.id } do |form| %>
   <%= form.collection_check_boxes :answer_ids, @survey.current_question.answers, :id, :body, include_hidden: false  do |b| %>
     <p>
       <%= b.check_box id: "answer_ids_#{b.object.id}" %>

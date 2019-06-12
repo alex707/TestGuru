@@ -39,7 +39,7 @@ class Survey < ApplicationRecord
   end
 
   def past?
-    self.test.timer.present? && Time.now >= (self.created_at + self.test.timer)
+    test.timer? && (created_at + test.timer.seconds).past?
   end
 
   private

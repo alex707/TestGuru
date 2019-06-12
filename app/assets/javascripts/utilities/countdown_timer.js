@@ -17,7 +17,10 @@ function changeValue(countDownDate) {
   document.getElementById("countdown_timer").classList.remove('hide');
 
   if (distance <= 0) {
-    document.getElementById(surveyFrm).submit();
+    var form = document.querySelector('.survey-form');
+    var surveyId = form.dataset.surveyId;
+
+    document.querySelector('.survey-form[data-survey-id="' + surveyId + '"]').submit();
     document.getElementById("countdown_timer").classList.add('hide');
   }
 }
